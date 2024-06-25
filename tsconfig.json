@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "target": "ES5",
+    "noLib": true,
+    "removeComments": true,
+    "useDefineForClassFields": false,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "module": "ESNext",
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "types": [
+      "types-for-adobe/shared/global",
+      "types-for-adobe/shared/JavaScript",
+      "types-for-adobe/shared/ScriptUI",
+      "types-for-adobe/shared/XMPScript",
+      "types-for-adobe/AfterEffects/23.0",
+    ]
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS",
+      "noLib": false,
+      "allowJs": true,
+      "types": [
+        "node",
+      ]
+    }
+  },
+  "include": [
+    "index.ts",
+    "src",
+    "tests"
+  ]
+}

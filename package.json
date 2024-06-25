@@ -1,7 +1,8 @@
 {
   "name": "zd_es_lib",
   "version": "0.0.1",
-  "description": "zd_es_lib",
+  "description": "这是一个 ExtendScript 的库,里面包含了一些常用的函数",
+  "main": "index.ts",
   "types": "src/@types",
   "files": [
     "src",
@@ -10,10 +11,8 @@
   ],
   "author": "赵大牛",
   "email": "2946757613@qq.com",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zHaOdANiuu/zd-es-lib"
-  },
+  "license": "MIT",
+  "homepage": "https://github.com/zHaOdANiuu/zd-es-lib",
   "scripts": {
     "lint": "eslint src --quiet",
     "lint:fix": "eslint src --fix",

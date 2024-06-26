@@ -5,10 +5,10 @@ class ParseJSONAsUI
             children:   true,
             properties: true
       };
-      __UI_JSON__: Record<string, any>;
-      constructor(__UI_JSON__: Record<string, unknown>)
+      UISource: Record<string, any>;
+      constructor(UISource: Record<string, unknown>)
       {
-            this.__UI_JSON__ = __UI_JSON__;
+            this.UISource = UISource;
       }
       static addWindow(
                   type: 'dialog' | 'palette' | 'window',
@@ -149,7 +149,22 @@ class ParseJSONAsUI
             if (alignment) result.alignment = alignment;
             return result;
       }
-      _argumentsParser(value: any): string
+      InstalledUI(): Window | Panel
+      {
+            const newType = this._propertiesParser(this.UISource);
+            const WINDOW: any = globalThis instanceof Panel ? globalThis : new Window(newType);
+            for (const k in this.UISource)
+            {
+                  if (!Object.prototype.hasOwnProperty.call(this.UISource, k)) continue;
+                  if (ParseJSONAsUI.SPECIAL_PROPERTY[k]) continue;
+                  WINDOW[k] = this.UISource[k];
+            }
+            this._installedControl(this.UISource.children, WINDOW);
+            WINDOW.layout.layout(true);
+            WINDOW.layout.resize();
+            return WINDOW as Window | Panel;
+      }
+      private _argumentsParser(value: any): string
       {
             const result: string[] = [];
             const length = value.length;
@@ -160,7 +175,7 @@ class ParseJSONAsUI
             }
             return value;
       }
-      _propertiesParser(value: any)
+      private _propertiesParser(value: any)
       {
             if (!value.properties) return value.type;
             let str = '';
@@ -169,7 +184,7 @@ class ParseJSONAsUI
                         str += k + ':' + this._argumentsParser(value.properties[k]) + ',';
             return value.type + '{properties:{' + str + '}}';
       }
-      _installedControl(children: Record<string, any>, parent: Window | Panel | Group): void
+      private _installedControl(children: Record<string, any>, parent: Window | Panel | Group): void
       {
             for (const k in children)
             {
@@ -184,21 +199,6 @@ class ParseJSONAsUI
                         ELEMENT[j] = children[k][j];
                   }
             }
-      }
-      InstalledUI(): Window | Panel
-      {
-            const newType = this._propertiesParser(this.__UI_JSON__);
-            const WINDOW: any = globalThis instanceof Panel ? globalThis : new Window(newType);
-            for (const k in this.__UI_JSON__)
-            {
-                  if (!Object.prototype.hasOwnProperty.call(this.__UI_JSON__, k)) continue;
-                  if (ParseJSONAsUI.SPECIAL_PROPERTY[k]) continue;
-                  WINDOW[k] = this.__UI_JSON__[k];
-            }
-            this._installedControl(this.__UI_JSON__.children, WINDOW);
-            WINDOW.layout.layout(true);
-            WINDOW.layout.resize();
-            return WINDOW as Window | Panel;
       }
 }
 

@@ -4,8 +4,8 @@ Hi~ o(_￣ ▽ ￣_)ブ
 
 ## 文档
 
-- [中文文档](https://github.com/zhaoyiming0803/zd-es-lib/blob/master/README.md)
-- [English Documentation](https://github.com/zhaoyiming0803/zd-es-lib/blob/master/README_en.md)
+- [中文文档](https://zhaodaniuu.github.io/zd-es-lib/docs/zh)
+- [English Documentation](https://zhaodaniuu.github.io/zd-es-lib/docs/en)
 
 ## 介绍
 
@@ -13,23 +13,6 @@ Hi~ o(_￣ ▽ ￣_)ブ
 - 这个库的目的是为了方便开发者开发 After Effects 的脚本.
 - 基于 ts 开发,用 webpack 打包.
 - 目前这个库还在开发中,欢迎大家提出宝贵意见.
-
-## 目录
-
-```
-zd-es-lib
-├── dist
-│ ├── main.js // 打包后的 js 文件
-├── src
-│ ├── @types // 类型文件夹
-│ ├   ├── auto-imports.d.ts // 全部的函数声明
-│ ├   ├── index.d.ts // 全局的类型声明
-├── index.ts // 入口文件
-├── webpack // webpack 配置
-├── tsconfig.json // ts 配置
-├── package.json // 包管理配置
-└── README.md // 介绍文档
-```
 
 ## 使用
 

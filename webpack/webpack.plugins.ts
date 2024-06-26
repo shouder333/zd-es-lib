@@ -1,6 +1,6 @@
 import { Compiler } from 'webpack';
 import { ConcatSource, Source } from 'webpack-sources';
-/**解决ae脚本用webpack打包完以后是个立即执行函数,从而获得不到全局的this */
+/** 解决ae脚本用webpack打包完以后是个立即执行函数,从而获得不到全局的this */
 class WebpackGlobalThis
 {
       apply(compiler: Compiler)

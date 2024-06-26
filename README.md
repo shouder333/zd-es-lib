@@ -39,9 +39,7 @@ tsconfig.json:
 {
       "extends": "./node_modules/zd-es-lib/tsconfig.json",
       "compilerOptions": {
-            "path": {
-                  "zd-es-lib": ["./node_modules/zd-es-lib/auto-imports.d.ts"]
-            }
+            "types": ["zd-es-lib/src/@types/auto-imports.d.ts", "zd-es-lib/src/@types/index.d.ts"]
       }
 }
 ```
@@ -66,7 +64,5 @@ npm run build
 
 ## 参考
 
-- src/global/JSON.ts
-  [json2](https://github.com/douglascrockford/JSON-js)
-- src/global/atob.ts, src/global/btoa.ts
-  [base64](https://github.com/davidchambers/Base64.js)
+- src/global/JSON.ts => [json2](https://github.com/douglascrockford/JSON-js)
+- src/global/atob.ts, src/global/btoa.ts => [base64](https://github.com/davidchambers/Base64.js)

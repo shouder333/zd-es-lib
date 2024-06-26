@@ -10,7 +10,7 @@ const JSON: JSON = {
             try
             {
                   if (text[0] !== '{') throw 'Invalid JSON';
-                  const data =  Function.call({}, 'return ' + text)();
+                  const data = Function.call({}, 'return ' + text)();
                   if (reviver === undef) return data;
                   let _: unknown;
                   (function fn(value: Record<string, unknown>, key: string)

@@ -12,7 +12,7 @@
   ],
   "author": "赵大牛",
   "email": "2946757613@qq.com",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "homepage": "https://github.com/zHaOdANiuu/zd-es-lib",
   "scripts": {
     "lint": "eslint src --quiet",

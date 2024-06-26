@@ -7,7 +7,7 @@ const getProperties = (items: Layer | PropertyGroup): _PropertyClasses[] =>
       return result;
 };
 
-/**对属性组的每个属性进行操作 */
+/** 对属性组的每个属性进行操作 */
 const eachPropertyGroup = (element: Layer | PropertyGroup, callback: (property: Property) => void) =>
 {
       let i = -1;
@@ -25,14 +25,14 @@ const eachPropertyGroup = (element: Layer | PropertyGroup, callback: (property: 
       }
 };
 
-/**对活动合成进行操作 */
+/** 对活动合成进行操作 */
 const activeCompItemEnviron = (callback: (compItem: CompItem) => void) =>
 {
       const activeItem = app.project.activeItem;
       if (activeItem instanceof CompItem) callback(activeItem);
 };
 
-/**对活动合成里的所有图层进行操作 */
+/** 对活动合成里的所有图层进行操作 */
 const eachActiveCompItemLayers = (callback: (layer: Layer) => void) => activeCompItemEnviron((activeItem) =>
 {
       let i = -1;
@@ -41,13 +41,13 @@ const eachActiveCompItemLayers = (callback: (layer: Layer) => void) => activeCom
       while (++i < length) callback(layers[i]);
 });
 
-/**对活动合成里的所有图层属性进行操作 */
-const eachActiveCompItemLayersProperties = (callback: (property: Property) => void) => { eachActiveCompItemLayers((layer) => eachPropertyGroup(layer,  (property) => callback(property))); };
+/** 对活动合成里的所有图层属性进行操作 */
+const eachActiveCompItemLayersProperties = (callback: (property: Property) => void) => { eachActiveCompItemLayers((layer) => eachPropertyGroup(layer, (property) => callback(property))); };
 
-/**对活动合成里的所有含有表达式的属性进行操作 */
+/** 对活动合成里的所有含有表达式的属性进行操作 */
 const eachActiveCompItemLayersExpressionProperties = (callback: (property: Property) => void) => { eachActiveCompItemLayersProperties((property) => property.expression !== '' && property.canSetExpression && callback(property)); };
 
-/**对合成里的所有图层进行操作 */
+/** 对合成里的所有图层进行操作 */
 const eachCompItemLayers = (compItem: CompItem, callback: (layer: Layer) => void) =>
 {
       let i = 0;
@@ -56,7 +56,7 @@ const eachCompItemLayers = (compItem: CompItem, callback: (layer: Layer) => void
       while (i < length) callback(layers[++i]);
 };
 
-/**对项目里的所有合成进行操作 */
+/** 对项目里的所有合成进行操作 */
 const eachCompItems = (callback: (compItem: CompItem) => void) =>
 {
       let i = 0;
@@ -69,19 +69,19 @@ const eachCompItems = (callback: (compItem: CompItem) => void) =>
       }
 };
 
-/**对项目里的所有图层进行操作 */
+/** 对项目里的所有图层进行操作 */
 const eachProjectLayers = (callback: (layer: Layer) => void) => { eachCompItems((compItem) => eachCompItemLayers(compItem, (layer) => callback(layer))); };
 
-/**对项目里的每个图层的每个属性进行操作 */
+/** 对项目里的每个图层的每个属性进行操作 */
 const eachProjectLayersProperties = (callback: (property: Property) => void) => { eachProjectLayers((layer) => eachPropertyGroup(layer, (property) => callback(property))); };
 
-/**对项目里每个有表达式的属性进行操作 */
+/** 对项目里每个有表达式的属性进行操作 */
 const eachProjectLayersExpressionProperties = (callback: (property: Property) => void) => { eachProjectLayersProperties((property) => property.expression !== '' && property.canSetExpression && callback(property)); };
 
-/**对选择的所有合成进行操作 */
+/** 对选择的所有合成进行操作 */
 const eachSelectedCompItems = (callback: (compItem: CompItem) => void) => { eachCompItems((compItem) => compItem.selected && callback(compItem)); };
 
-/**对选择合成里的所有图层进行操作 */
+/** 对选择合成里的所有图层进行操作 */
 const eachSelectedCompItemLayers = (callback: (layer: Layer) => void) =>
 {
       eachSelectedCompItems((activeItem) =>
@@ -93,10 +93,10 @@ const eachSelectedCompItemLayers = (callback: (layer: Layer) => void) =>
       });
 };
 
-/**对选择合成里的所有图层属性属性进行操作 */
+/** 对选择合成里的所有图层属性属性进行操作 */
 const eachSelectedCompItemLayersProperties = (callback: (property: Property) => void) => { eachSelectedCompItemLayers((layer) => eachPropertyGroup(layer, (property) => callback(property))); };
 
-const eachSelectedCompItemLayersExpressionProperties = (callback: (property: Property) => void) => { eachSelectedCompItemLayersProperties((property) => property.expression !== ''  && property.canSetExpression && callback(property)); };
+const eachSelectedCompItemLayersExpressionProperties = (callback: (property: Property) => void) => { eachSelectedCompItemLayersProperties((property) => property.expression !== '' && property.canSetExpression && callback(property)); };
 
 const eachSelectedLayers = (callback: (layer: Layer) => void) =>
 {
@@ -115,10 +115,10 @@ const eachSelectedLayers = (callback: (layer: Layer) => void) =>
       });
 };
 
-/**对活动合成里的所有选中图层的所有属性进行操作 */
+/** 对活动合成里的所有选中图层的所有属性进行操作 */
 const eachSelectedLayersProperties = (callback: (property: Property) => void) => { eachSelectedLayers((layer) => eachPropertyGroup(layer, (property) => callback(property))); };
 
-/**对活动合成里的所有选中图层的所有有表达式的属性进行操作 */
+/** 对活动合成里的所有选中图层的所有有表达式的属性进行操作 */
 const eachSelectedLayersExpressionProperties = (callback: (property: Property) => void) => { eachSelectedLayersProperties((property) => property.expression !== '' && property.canSetExpression && callback(property)); };
 
 const eachSelectedProperties = (callback: (property: Property) => void) =>

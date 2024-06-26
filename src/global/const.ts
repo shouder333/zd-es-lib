@@ -80,6 +80,8 @@ const randomString = () => Number(generateRandomNumber().toString().substring(2)
 
 const random = (min = 0, max = 1) => Math.floor(generateRandomNumber() * (max - min) + min);
 
+const rgbNormalize = (r: number, g: number, b: number) => [ r / 255, g / 255, b / 255 ];
+
 const rgbToHex = (r: number, g: number, b: number) => '#' + ((r << 16) + (g << 8) + b).toString(16);
 
 const hexToRgb = (hex: string) =>
@@ -92,7 +94,7 @@ const randomHexColor = () => rgbToHex(random(0, 255), random(0, 255), random(0, 
 
 const degreesToRadians = (degrees: number) => degrees * Math.PI / 180;
 
-const radiansToDegrees = (radians: number) => radians /  Math.PI * 180;
+const radiansToDegrees = (radians: number) => radians / Math.PI * 180;
 
 const dihedralAngle = (m: number, n: number) => radiansToDegrees(2 * Math.asin(Math.cos(Math.PI / n) * (1 / Math.sin(Math.PI / m))));
 
@@ -125,6 +127,7 @@ export {
       reversedString,
       randomString,
       random,
+      rgbNormalize,
       rgbToHex,
       hexToRgb,
       randomHexColor,

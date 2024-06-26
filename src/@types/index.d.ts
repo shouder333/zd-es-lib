@@ -1,3 +1,6 @@
+/// <reference types="types-for-adobe/**" />
+/// <reference types="types-for-adobe/AfterEffects/23.0" />
+
 type globalThis = Object | Panel;
 
 type my_exp = string;
@@ -121,6 +124,12 @@ interface Error
   number: number;
   source: string;
   start: number;
+}
+
+interface _AddControlPropertiesEditText
+{
+  /** 原来的scrollable是错误的 */
+  scrolling?: boolean;
 }
 
 class MouseEvent extends UIEvent

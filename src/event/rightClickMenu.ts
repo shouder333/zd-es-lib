@@ -5,8 +5,8 @@
  */
 function rightClickMenu(container: $Control, element: Window)
 {
-      element.addEventListener('blur',  () => element.hide());
-      container.addEventListener('click',  (event) =>
+      element.addEventListener('blur', () => element.hide());
+      container.addEventListener('click', (event) =>
       {
             if (event.button === 2 && event.detail === 1)
             {

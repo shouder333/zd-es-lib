@@ -5,7 +5,7 @@ interface LinkedListNode<T>
 }
 
 type linkedListNode = LinkedListNode<linkedListNode>;
-/**循环列表 */
+/** 循环列表,且值为唯一 */
 class LinkedList
 {
       head: linkedListNode | null;

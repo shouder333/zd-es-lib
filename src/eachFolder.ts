@@ -1,4 +1,4 @@
-/**遍历文件夹下的所有文件 */
+/** 遍历文件夹下的所有文件 */
 
 // function eachFolder(folder: Folder, suffix: RegExp): File[]
 // {
@@ -19,28 +19,34 @@
 //       return result;
 // }
 
-function eachFolder(folder: Folder, suffix: RegExp): File[]
+function eachFolder(folder: Folder, suffix: RegExp): File[] | []
 {
       let i = -1;
       let data: Folder | File;
       const stack = new Stack<(Folder | File)[]>();
       stack.push(folder.getFiles());
       const result: File[] = [];
-      while (!stack.isEmpty())
+      for (;;)
       {
-            while (data = stack.peek()[++i])
+            if (stack.isEmpty()) return result;
+            for (;;)
             {
+                  data = stack.peek()[++i];
+                  if (!data)
+                  {
+                        i = -1;
+                        stack.pop();
+                        break;
+                  }
                   if (data instanceof Folder)
                   {
                         i = -1;
                         stack.push(data.getFiles());
+                        continue;
                   }
-                  else if (suffix.test(data.name)) result.push(data);
+                  if (suffix.test(data.name)) result.push(data);
             }
-            i = -1;
-            stack.pop();
       }
-      return result;
 }
 
 export default eachFolder;

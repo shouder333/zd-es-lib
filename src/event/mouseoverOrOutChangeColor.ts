@@ -15,7 +15,7 @@ function mouseoverOrOutChangeColor(
             center: space / 2,
             right:  controlObj.size[0] - space
       }[justify];
-      controlObj.onDraw = function ()
+      controlObj.onDraw = function()
       {
             this.graphics.rectPath(0, 0, this.size[0], this.size[1]);
             this.graphics.fillPath(this.graphics.newBrush(0, defaultColor));

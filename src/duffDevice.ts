@@ -1,4 +1,4 @@
-/**高效的循环 */
+/** 高效的循环 */
 function duffDevice<T>(items: T[], process: (item: T, index: number) => void): void
 {
       const length = items.length;

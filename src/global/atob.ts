@@ -1,6 +1,6 @@
 function atob(data: string): string
 {
-      return data.replace(/[^A-Za-z0-9\+\/]/g, '').replace(/\S{1,4}/g,  (str: string) =>
+      return data.replace(/[^A-Za-z0-9\+\/]/g, '').replace(/\S{1,4}/g, (str: string) =>
       {
             const length = str.length;
             const binaryShiftedRight = (length > 0 ? BASE_CHARACTERS_TAB[str.charAt(0)] << 18 : 0)
